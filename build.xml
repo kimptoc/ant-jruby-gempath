@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ant-jruby-gempath" default="all">
+
+    <target name="all">
+        <echo message="go" />
+    </target>
+
+    <patternset id="library.patterns">
+        <include name="*.war"/>
+        <include name="*.ear"/>
+        <include name="*.zip"/>
+        <include name="*.swc"/>
+        <include name="*.egg"/>
+        <include name="*.jar"/>
+    </patternset>
+
+    <path id="library.jruby.classpath">
+        <fileset dir="lib">
+            <patternset refid="library.patterns"/>
+        </fileset>
+    </path>
+
+    <path id="myclasspath">
+        <path refid="library.jruby.classpath"/>
+    </path>
+
+    <target name="jruby">
+
+        <java classname="org.jruby.Main" failonerror="true" fork="true" dir="${basedir}" logerror="true">
+            <env key="GEM_PATH" path="${basedir}/gems" />
+            <env key="GEM_HOME" path="${basedir}/gems" />
+            <classpath refid="myclasspath"/>
+            <arg line="src/boo.rb "/>
+        </java>
+
+    </target>
+
+</project>

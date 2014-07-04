@@ -1,0 +1,28 @@
+Need a gem to provide junit style output from ruby - ci_reporter.  Used in teamcity.
+
+How to install/update the gems in this directory:
+
+Need jruby installed, such that the command line has a 'gem' command - eg via jruby msi
+
+Open command prompt in this directory
+
+Setup GEM paths
+
+> set GEM_HOME=.
+> set GEM_PATH=.
+
+See the current versions
+
+> gem list
+
+Update all
+
+> gem update
+
+Or if first time, to install
+
+> gem install ci_reporter
+
+Or to remove an old version
+
+> gem uninstall builder -v 3.1.0
